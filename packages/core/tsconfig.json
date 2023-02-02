@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "ESNext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "moduleResolution": "node",
+        "esModuleInterop": true
+    },
+    "include": ["src"],
+    "exclude": ["./dist/**"]
+}
