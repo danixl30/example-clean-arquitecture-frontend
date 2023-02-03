@@ -14,6 +14,7 @@ export const stateFactoryProvider =
                 get value() {
                     return value
                 },
+                getValue: () => value,
                 subscribe: (callback: (value: T) => void) => {
                     data.subscribe(callback)
                 },

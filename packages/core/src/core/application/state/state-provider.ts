@@ -1,5 +1,6 @@
 export type StateViewer<T> = {
     get value(): T
+    getValue(): T
     subscribe(subs: (state: T) => void): void
 }
 

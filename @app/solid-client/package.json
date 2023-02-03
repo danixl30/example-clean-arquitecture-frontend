@@ -1,0 +1,21 @@
+{
+  "name": "solid-client",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start:dev": "vite",
+    "build": "vite build",
+    "start": "vite preview",
+    "start:prod": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@mono/types-utils": "workspace:^0.0.1",
+    "vite": "^4.0.3",
+    "vite-plugin-solid": "^2.5.0"
+  },
+  "dependencies": {
+    "@mono/core": "workspace:^0.0.1",
+    "solid-js": "^1.6.0"
+  }
+}

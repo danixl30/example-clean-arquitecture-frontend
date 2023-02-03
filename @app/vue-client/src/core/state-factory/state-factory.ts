@@ -24,6 +24,7 @@ export const stateFactoryProvider =
                 get value() {
                     return value.value
                 },
+                getValue: () => value.value,
                 subscribe: (sub: (value: T) => void) => {
                     subscribers.value.push(sub)
                 },

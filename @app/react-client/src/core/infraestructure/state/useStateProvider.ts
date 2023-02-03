@@ -27,6 +27,7 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
             get value() {
                 return state
             },
+            getValue: () => state,
             subscribe(callback: (value: T) => void) {
                 subscriptors.current.push(callback)
             },
