@@ -64,6 +64,10 @@ export const usePaginationManager =
             pageState.setState(page)
         }
 
+        const mutate = (callback: (data: T[]) => T[]) => {
+            dataState.setState(callback(dataState.state.value))
+        }
+
         return {
             data: dataState.state,
             error: errorState.state,
@@ -74,5 +78,6 @@ export const usePaginationManager =
             previousPage,
             setPage,
             isTop: isTopState.state,
+            mutate
         }
     }

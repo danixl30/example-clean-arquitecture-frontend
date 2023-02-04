@@ -50,24 +50,24 @@ export default function Main() {
 
     return (
         <>
-            {isLoadingPosts.getValue() && <h1>Loading...</h1>}
-            {errorPosts.getValue() && <h1>Error on fetch posts</h1>}
-            {!isLoadingPosts.getValue() && !errorPosts.getValue() && (
+            {isLoadingPosts.value && <h1>Loading...</h1>}
+            {errorPosts.value && <h1>Error on fetch posts</h1>}
+            {!isLoadingPosts.value && !errorPosts.getValue() && (
                 <>
                     <h1>Hello world</h1>
-                    <h2>{inputValue.getValue()}</h2>
-                    {errorInput.getValue() && (
+                    <h2>{inputValue.value}</h2>
+                    {errorInput.value && (
                         <>
-                            <h3>{errorInput.getValue()}</h3>
+                            <h3>{errorInput.value}</h3>
                         </>
                     )}
                     <input
                         type="text"
-                        value={inputValue.getValue()}
+                        value={inputValue.value}
                         onKeyUp={onChangeInputPage}
                     />
-                    <p>{eventState.getValue()}</p>
-                    {posts.getValue()?.map((e) => (
+                    <p>{eventState.value}</p>
+                    {posts.value?.map((e) => (
                         <div>{e.title}</div>
                     ))}
                 </>

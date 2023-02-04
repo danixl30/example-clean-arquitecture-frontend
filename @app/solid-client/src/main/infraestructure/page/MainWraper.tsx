@@ -8,9 +8,9 @@ export default function MainWraper() {
     return (
         <div>
             <button onClick={onOpenClose}>
-                {openSate.getValue() ? 'Close' : 'Open'}
+                {openSate.value ? 'Close' : 'Open'}
             </button>
-            {openSate.getValue() && <Main />}
+            {openSate.value && <Main />}
         </div>
     )
 }

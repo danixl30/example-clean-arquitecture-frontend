@@ -42,6 +42,16 @@ export const nativeOnInitJob =
             job()
         }
 
+        const silentReload = () => {
+            if (reloadingState.state.value || loadingState.state.value)
+                throw new Error('Is in job')
+            job()
+        }
+
+        const mutate = (callback: (data: Optional<T>) => Optional<T>) => {
+            dataState.setState(callback(dataState.state.value))
+        }
+
         stateObserver(reload, ...args)
 
         return {
@@ -50,5 +60,7 @@ export const nativeOnInitJob =
             error: errorState.state,
             isLoading: loadingState.state,
             isReloading: reloadingState.state,
+            silentReload,
+            mutate
         }
     }

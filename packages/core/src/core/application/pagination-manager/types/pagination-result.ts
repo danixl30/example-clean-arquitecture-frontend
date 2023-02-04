@@ -11,4 +11,5 @@ export type PaginationResult<T> = {
     increment(): void
     previousPage(): void
     setPage(page: number): void
+    mutate(callback: (data: T[]) => T[]): void
 }

@@ -9,6 +9,8 @@ export type JobState<T> = {
     isLoading: StateViewer<boolean>
     isReloading: StateViewer<boolean>
     reload: () => void
+    mutate(callback: (data: Optional<T>) => Optional<T>): void
+    silentReload(): void
 }
 
 export type OnInitJob = <T, U>(
