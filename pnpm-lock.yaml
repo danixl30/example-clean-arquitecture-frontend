@@ -16,7 +16,8 @@ importers:
       eslint-plugin-prettier: ^4.0.0
       graphviz: ^0.0.9
       prettier: ^2.3.2
-      typescript: ^4.9.4
+      typescript: ^4.9.5
+      vite: ^4.0.3
     dependencies:
       axios: 1.2.6
     devDependencies:
@@ -32,6 +33,7 @@ importers:
       graphviz: 0.0.9
       prettier: 2.8.3
       typescript: 4.9.5
+      vite: 4.0.4
 
   '@app/react-client':
     specifiers:
@@ -41,7 +43,6 @@ importers:
       '@vitejs/plugin-react': ^3.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
-      vite: ^4.0.0
     dependencies:
       '@mono/core': link:../../packages/core
       react: 18.2.0
@@ -49,23 +50,20 @@ importers:
     devDependencies:
       '@types/react': 18.0.27
       '@types/react-dom': 18.0.10
-      '@vitejs/plugin-react': 3.0.1_vite@4.0.4
-      vite: 4.0.4
+      '@vitejs/plugin-react': 3.0.1
 
   '@app/solid-client':
     specifiers:
       '@mono/core': workspace:^0.0.1
       '@mono/types-utils': workspace:^0.0.1
       solid-js: ^1.6.0
-      vite: ^4.0.3
       vite-plugin-solid: ^2.5.0
     dependencies:
       '@mono/core': link:../../packages/core
       solid-js: 1.6.10
     devDependencies:
       '@mono/types-utils': link:../../packages/types-utils
-      vite: 4.0.4
-      vite-plugin-solid: 2.5.0_solid-js@1.6.10+vite@4.0.4
+      vite-plugin-solid: 2.5.0_solid-js@1.6.10
 
   '@app/svelte-client':
     specifiers:
@@ -76,24 +74,21 @@ importers:
       svelte: ^3.54.0
       svelte-check: ^2.10.0
       tslib: ^2.4.1
-      vite: ^4.0.0
     dependencies:
       '@mono/core': link:../../packages/core
     devDependencies:
       '@mono/types-utils': link:../../packages/types-utils
-      '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.1+vite@4.0.4
+      '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.1
       '@tsconfig/svelte': 3.0.0
       svelte: 3.55.1
       svelte-check: 2.10.3_svelte@3.55.1
       tslib: 2.5.0
-      vite: 4.0.4
 
   '@app/vue-client':
     specifiers:
       '@mono/core': workspace:^0.0.1
       '@mono/types-utils': workspace:^0.0.1
       '@vitejs/plugin-vue': ^4.0.0
-      vite: ^4.0.0
       vue: ^3.2.45
       vue-tsc: ^1.0.11
     dependencies:
@@ -101,8 +96,7 @@ importers:
       vue: 3.2.45
     devDependencies:
       '@mono/types-utils': link:../../packages/types-utils
-      '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
-      vite: 4.0.4
+      '@vitejs/plugin-vue': 4.0.0_vue@3.2.45
       vue-tsc: 1.0.24
 
   packages/array-methods:
@@ -783,7 +777,7 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /@sveltejs/vite-plugin-svelte/2.0.2_svelte@3.55.1+vite@4.0.4:
+  /@sveltejs/vite-plugin-svelte/2.0.2_svelte@3.55.1:
     resolution: {integrity: sha512-xCEan0/NNpQuL0l5aS42FjwQ6wwskdxC3pW1OeFtEKNZwRg7Evro9lac9HesGP6TdFsTv2xMes5ASQVKbCacxg==}
     engines: {node: ^14.18.0 || >= 16}
     peerDependencies:
@@ -796,8 +790,7 @@ packages:
       magic-string: 0.27.0
       svelte: 3.55.1
       svelte-hmr: 0.15.1_svelte@3.55.1
-      vite: 4.0.4
-      vitefu: 0.2.4_vite@4.0.4
+      vitefu: 0.2.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -988,7 +981,7 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-react/3.0.1_vite@4.0.4:
+  /@vitejs/plugin-react/3.0.1:
     resolution: {integrity: sha512-mx+QvYwIbbpOIJw+hypjnW1lAbKDHtWK5ibkF/V1/oMBu8HU/chb+SnqJDAsLq1+7rGqjktCEomMTM5KShzUKQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -999,19 +992,17 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.20.12
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-vue/4.0.0_vite@4.0.4+vue@3.2.45:
+  /@vitejs/plugin-vue/4.0.0_vue@3.2.45:
     resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.0.4
       vue: 3.2.45
     dev: true
 
@@ -3740,7 +3731,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-solid/2.5.0_solid-js@1.6.10+vite@4.0.4:
+  /vite-plugin-solid/2.5.0_solid-js@1.6.10:
     resolution: {integrity: sha512-VneGd3RyFJvwaiffsqgymeMaofn0IzQLPwDzafTV2f1agoWeeJlk5VrI5WqT9BTtLe69vNNbCJWqLhHr9fOdDw==}
     peerDependencies:
       solid-js: ^1.3.17 || ^1.4.0 || ^1.5.0 || ^1.6.0
@@ -3752,8 +3743,7 @@ packages:
       merge-anything: 5.1.4
       solid-js: 1.6.10
       solid-refresh: 0.4.3_solid-js@1.6.10
-      vite: 4.0.4
-      vitefu: 0.2.4_vite@4.0.4
+      vitefu: 0.2.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3791,15 +3781,13 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitefu/0.2.4_vite@4.0.4:
+  /vitefu/0.2.4:
     resolution: {integrity: sha512-fanAXjSaf9xXtOOeno8wZXIhgia+CZury481LsDaV++lSvcU2R9Ch2bPh3PYFyoHW+w9LqAeYRISVQjUIew14g==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
     peerDependenciesMeta:
       vite:
         optional: true
-    dependencies:
-      vite: 4.0.4
     dev: true
 
   /vue-template-compiler/2.7.14:
