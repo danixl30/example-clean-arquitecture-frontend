@@ -6,6 +6,7 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
     const firstTime = useRef(true)
     const isMounted = useRef(true)
     const [state, setState] = useState<T>(initialize)
+    let stateCache = state
 
     useEffect(() => {
         if (firstTime.current) {
@@ -25,7 +26,7 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
     return {
         state: {
             get value() {
-                return state
+                return stateCache
             },
             getValue: () => state,
             subscribe(callback: (value: T) => void) {
@@ -34,6 +35,7 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
         },
         setState(value: T) {
             if (!isMounted.current) return
+            stateCache = value
             setState(value)
         },
     }
