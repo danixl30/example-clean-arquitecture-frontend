@@ -15,6 +15,7 @@ import { useRefValueProvider } from '../../../core/infraestructure/value-provide
 import { useRefStateFactory } from '../../../core/infraestructure/state/useRefStateHandler'
 
 export default function Main() {
+    const stateFactory = useRefStateFactory()
     const {
         inputValue,
         onChangeInput,
@@ -24,20 +25,16 @@ export default function Main() {
         errorInput,
         eventState,
     } = mainPageLogic(
-        useRefStateFactory,
+        stateFactory,
         useEffectStateObserver,
-        nativeOnInitJob(
-            useRefStateFactory,
-            useEffectStateObserver,
-            useEffectOnInit,
-        ),
+        nativeOnInitJob(stateFactory, useEffectStateObserver, useEffectOnInit),
         getPostService(
             getPostsRepositoryJSONPlaceHolder(
                 useAxiosHttp('https://my-json-server.typicode.com/'),
                 cancelHandler(useRefValueProvider(), useEffectOnInit),
             ),
         ),
-        createInputManager(useRefStateFactory),
+        createInputManager(stateFactory),
         getEventContext(),
         eventListenerFactory(useEffectOnInit, getEventContext()),
     )

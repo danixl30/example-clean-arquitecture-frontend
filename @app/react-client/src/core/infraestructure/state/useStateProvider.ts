@@ -1,20 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { StateProvider } from '@mono/core'
 
-export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
-    const subscriptors = useRef<((value: T) => void)[]>([])
-    const firstTime = useRef(true)
+export const useStateFactory = () => {
     const isMounted = useRef(true)
-    const [state, setState] = useState<T>(initialize)
-    let stateCache = state
-
-    useEffect(() => {
-        if (firstTime.current) {
-            firstTime.current = false
-            return
-        }
-        subscriptors.current.forEach((e) => e(state))
-    }, [state])
 
     useEffect(() => {
         isMounted.current = true
@@ -23,20 +11,35 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
         }
     }, [])
 
-    return {
-        state: {
-            get value() {
-                return stateCache
+    return <T>(initialize: T): StateProvider<T> => {
+        const subscriptors = useRef<((value: T) => void)[]>([])
+        const [state, setState] = useState<T>(initialize)
+        const firstTime = useRef(true)
+        let stateCache = state
+
+        useEffect(() => {
+            if (firstTime.current) {
+                firstTime.current = false
+                return
+            }
+            subscriptors.current.forEach((e) => e(state))
+        }, [state])
+
+        return {
+            state: {
+                get value() {
+                    return stateCache
+                },
+                getValue: () => state,
+                subscribe(callback: (value: T) => void) {
+                    subscriptors.current.push(callback)
+                },
             },
-            getValue: () => state,
-            subscribe(callback: (value: T) => void) {
-                subscriptors.current.push(callback)
+            setState(value: T) {
+                if (!isMounted.current) return
+                stateCache = value
+                setState(() => value)
             },
-        },
-        setState(value: T) {
-            if (!isMounted.current) return
-            stateCache = value
-            setState(() => value)
-        },
+        }
     }
 }

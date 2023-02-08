@@ -3,7 +3,7 @@ import { mainWrapperLogic } from '@mono/core'
 import { useStateFactory } from '../../../core/infraestructure/state/useStateProvider'
 
 export default function MainWrapper() {
-    const { openSate, onOpenClose } = mainWrapperLogic(useStateFactory)
+    const { openSate, onOpenClose } = mainWrapperLogic(useStateFactory())
 
     const handleClick = () => {
         console.log(openSate.value)
