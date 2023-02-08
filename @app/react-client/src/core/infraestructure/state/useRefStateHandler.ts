@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { StateProvider } from '@mono/core'
 
-export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
+export const useRefStateFactory = <T>(initialize: T): StateProvider<T> => {
     const subscriptors = useRef<((value: T) => void)[]>([])
     const firstTime = useRef(true)
     const isMounted = useRef(true)
-    const [state, setState] = useState<T>(initialize)
-    let stateCache = state
+    const [_, forceUpdate] = useState<boolean>(false)
+    const state = useRef(initialize)
 
     useEffect(() => {
         if (firstTime.current) {
             firstTime.current = false
             return
         }
-        subscriptors.current.forEach((e) => e(state))
+        subscriptors.current.forEach((e) => e(state.current))
     }, [state])
 
     useEffect(() => {
@@ -26,17 +26,17 @@ export const useStateFactory = <T>(initialize: T): StateProvider<T> => {
     return {
         state: {
             get value() {
-                return stateCache
+                return state.current
             },
-            getValue: () => state,
+            getValue: () => state.current,
             subscribe(callback: (value: T) => void) {
                 subscriptors.current.push(callback)
             },
         },
         setState(value: T) {
             if (!isMounted.current) return
-            stateCache = value
-            setState(() => value)
+            forceUpdate((value) => !value)
+            state.current = value
         },
     }
 }

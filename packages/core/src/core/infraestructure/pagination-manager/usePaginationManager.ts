@@ -78,6 +78,6 @@ export const usePaginationManager =
             previousPage,
             setPage,
             isTop: isTopState.state,
-            mutate
+            mutate,
         }
     }

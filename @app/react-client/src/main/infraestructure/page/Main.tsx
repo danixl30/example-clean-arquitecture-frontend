@@ -11,7 +11,8 @@ import { useAxiosHttp } from '@mono/core'
 import { useEffectOnInit } from '../../../core/infraestructure/on-init/useEffectOnInit'
 import { useEffectStateObserver } from '../../../core/infraestructure/state-observer/useEffectStateObserver'
 import { useRefValueProvider } from '../../../core/infraestructure/value-provider/useRefValueProvider'
-import { useStateFactory } from '../../../core/infraestructure/state/useStateProvider'
+//import { useStateFactory } from '../../../core/infraestructure/state/useStateProvider'
+import { useRefStateFactory } from '../../../core/infraestructure/state/useRefStateHandler'
 
 export default function Main() {
     const {
@@ -23,10 +24,10 @@ export default function Main() {
         errorInput,
         eventState,
     } = mainPageLogic(
-        useStateFactory,
+        useRefStateFactory,
         useEffectStateObserver,
         nativeOnInitJob(
-            useStateFactory,
+            useRefStateFactory,
             useEffectStateObserver,
             useEffectOnInit,
         ),
@@ -36,7 +37,7 @@ export default function Main() {
                 cancelHandler(useRefValueProvider(), useEffectOnInit),
             ),
         ),
-        createInputManager(useStateFactory),
+        createInputManager(useRefStateFactory),
         getEventContext(),
         eventListenerFactory(useEffectOnInit, getEventContext()),
     )

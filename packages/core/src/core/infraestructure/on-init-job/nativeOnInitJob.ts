@@ -61,6 +61,6 @@ export const nativeOnInitJob =
             isLoading: loadingState.state,
             isReloading: reloadingState.state,
             silentReload,
-            mutate
+            mutate,
         }
     }
